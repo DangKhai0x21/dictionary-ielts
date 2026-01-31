@@ -251,11 +251,11 @@
 
             // Hiệu ứng pháo hoa theo mốc
             if (percentage === 30) confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
-            if (percentage === 50) {
+            if (percentage >= 50 && percentage <=55) {
                 confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
                 alert("Giỏi quá! 50% rồi nhé 🎉");
             }
-            if (percentage === 80) {
+            if (percentage >= 80 && percentage <=85) {
                 confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
                 alert("Sắp xong rồi! 80% 🔥");
             }
@@ -344,6 +344,7 @@
 
         function renderChallenges(baseUrl) {
             const container = document.getElementById('challenges');
+            const proxyPrefix = 'https://api.codetabs.com/v1/proxy?quest=';  // Hoặc 'https://api.allorigins.win/raw?url=' nếu muốn thử cái khác
             container.innerHTML = '';
             for (let i = 1; i <= numChallenges; i++) {
                 const div = document.createElement('div');
@@ -352,7 +353,7 @@
                 const scriptText = transcripts[i - 1] || '';
                 div.innerHTML = `
                     <h2>Challenge ${i}</h2>
-                    <audio id="audio-${i}" controls crossorigin="anonymous" src="${baseUrl}${i}.mp3"></audio>
+                    <audio id="audio-${i}" controls crossorigin="anonymous" preload="metadata" src="${proxyPrefix}${encodeURIComponent(baseUrl + i + '.mp3')}"></audio>
                     <div class="speed-control">
                         <label>Tốc độ:</label>
                         <select id="speed-${i}" onchange="changeSpeed(${i}, this.value)">
@@ -538,4 +539,5 @@
     </script>
 </body>
 </html>
+
 
