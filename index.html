@@ -352,7 +352,7 @@
                 const scriptText = transcripts[i - 1] || '';
                 div.innerHTML = `
                     <h2>Challenge ${i}</h2>
-                    <audio id="audio-${i}" controls src="${baseUrl}${i}.mp3"></audio>
+                    <audio id="audio-${i}" controls crossorigin="anonymous" src="${baseUrl}${i}.mp3"></audio>
                     <div class="speed-control">
                         <label>Tốc độ:</label>
                         <select id="speed-${i}" onchange="changeSpeed(${i}, this.value)">
@@ -538,3 +538,4 @@
     </script>
 </body>
 </html>
+
