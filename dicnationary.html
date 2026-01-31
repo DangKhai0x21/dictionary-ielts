@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dictation Web - Auto Fetch Transcript</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- CDN confetti cho hiệu ứng pháo hoa -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+        #setup {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0d65d6;
+        }
+        #proxyInfo {
+            font-size: 14px;
+            color: #e67e22;
+            margin-top: 10px;
+        }
+        #exerciseInfo {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .challenge {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid #e0e0e0;
+        }
+        .challenge h2 {
+            margin-top: 0;
+            color: #1a73e8;
+            font-size: 1.3em;
+        }
+        audio {
+            width: 100%;
+            margin: 15px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 90px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 12px;
+        }
+        button.check {
+            background: #34c759;
+            margin-right: 10px;
+        }
+        button.check:hover {
+            background: #2eb74f;
+        }
+        .script-btn {
+            background: #ff9800;
+            margin-left: 10px;
+        }
+        .script-btn:hover {
+            background: #f57c00;
+        }
+        .script-text {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3e0;
+            border-radius: 8px;
+            border: 1px solid #ffcc80;
+            display: none;
+            white-space: pre-wrap;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            border-left: 4px solid #ddd;
+        }
+        .correct {
+            color: #34c759;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #ff3b30;
+            font-weight: bold;
+        }
+        .diff {
+            background: #ffdddd;
+            color: #d32f2f;
+            padding: 0 3px;
+            border-radius: 3px;
+        }
+        .missing {
+            background: #ffebee;
+            color: transparent;
+            padding: 0 3px;
+            border-bottom: 2px solid #ef5350;
+        }
+        .hint {
+            color: #e67e22;
+            font-weight: 600;
+            margin-top: 12px;
+            display: block;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            font-style: italic;
+        }
+        .speed-control {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        .speed-control select {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        /* Thanh tiến độ bên phải */
+        #progress-sidebar {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 80px;
+            text-align: center;
+            background: white;
+            padding: 15px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        #progress-bar {
+            width: 100%;
+            height: 200px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+            position: relative;
+        }
+        #progress-fill {
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(to top, #34c759, #4caf50);
+            transition: height 0.6s ease;
+            position: absolute;
+            bottom: 0;
+        }
+        #progress-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #34c759;
+        }
+        #progress-label {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Dictation Practice</h1>
+        <div id="setup">
+            <label>Nhập link trang Listen and Type:</label>
+            <input type="text" id="transcriptUrl" placeholder="https://dailydictation.com/exercises/ielts-listening/cam16-test-3-part-2.525/listen-and-type">
+            <button onclick="loadExercise()">Load Bài Tập</button>
+        </div>
+
+        <div id="exerciseInfo" style="display:none;"></div>
+
+        <div id="challenges"></div>
+    </div>
+
+    <!-- Thanh tiến độ bên phải -->
+    <div id="progress-sidebar">
+        <div id="progress-label">Tiến độ</div>
+        <div id="progress-text">0%</div>
+        <div id="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+    </div>
+
+    <script>
+        let transcripts = [];
+        let numChallenges = 0;
+        let correctCount = 0; // Đếm số câu đúng
+
+        // Hàm cập nhật progress bar
+        function updateProgress() {
+            const percentage = Math.round((correctCount / numChallenges) * 100);
+            document.getElementById('progress-text').textContent = `${percentage}%`;
+            document.getElementById('progress-fill').style.height = `${percentage}%`;
+
+            // Hiệu ứng pháo hoa theo mốc
+            if (percentage === 30) confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+            if (percentage === 50) {
+                confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                alert("Giỏi quá! 50% rồi nhé 🎉");
+            }
+            if (percentage === 80) {
+                confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 } });
+                alert("Sắp xong rồi! 80% 🔥");
+            }
+            if (percentage === 100) {
+                confetti({
+                    particleCount: 300,
+                    spread: 180,
+                    origin: { y: 0.6 },
+                    colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00']
+                });
+                alert("Hoàn thành xuất sắc! 100% 🎆🎇");
+            }
+        }
+
+        async function loadExercise() {
+            const transcriptUrl = document.getElementById('transcriptUrl').value.trim();
+            if (!transcriptUrl) return alert("Vui lòng điền link!");
+
+            document.getElementById('exerciseInfo').innerHTML = '<div class="loading">Đang tải bài tập...</div>';
+            document.getElementById('exerciseInfo').style.display = 'block';
+
+            try {
+                const proxies = [
+                    'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(transcriptUrl)
+                ];
+                let html = null;
+                for (let proxy of proxies) {
+                    try {
+                        const response = await fetch(proxy, { mode: 'cors' });
+                        if (response.ok) {
+                            html = await response.text();
+                            break;
+                        }
+                    } catch {}
+                }
+                if (!html) throw new Error("Tất cả proxy đều fail. Thử mở https://corsproxy.io/ trước.");
+
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
+                let jsonData = null;
+                for (let script of scripts) {
+                    try {
+                        const data = JSON.parse(script.textContent);
+                        if (data['@type'] === 'Quiz' && data.text && data.audio) {
+                            jsonData = data;
+                            break;
+                        }
+                    } catch {}
+                }
+                if (!jsonData || !jsonData.text || !jsonData.audio) throw new Error("Không tìm thấy transcript hoặc audio source!");
+
+                const fullText = jsonData.text.trim();
+                transcripts = fullText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                numChallenges = transcripts.length;
+                if (numChallenges === 0) throw new Error("Transcript rỗng!");
+
+                const fullAudioSrc = jsonData.audio;
+                const baseMatch = fullAudioSrc.match(/^(https:\/\/dailydictation\.com\/upload\/ielts-listening\/[^\/]+\/)/);
+                let finalBase = '';
+                if (baseMatch) {
+                    finalBase = baseMatch[1];
+                } else {
+                    throw new Error("Không tìm thấy pattern folder upload trong audio source!");
+                }
+
+                document.getElementById('exerciseInfo').innerHTML = `
+                    <strong>Thành công!</strong><br>
+                    Tên bài: ${jsonData.name || 'Không rõ'}<br>
+                    Số câu: ${numChallenges}<br>
+                    Base audio tự động: ${finalBase}<br>
+                    Audio: ${finalBase}1.mp3 → ${finalBase}${numChallenges}.mp3
+                `;
+
+                // Reset progress khi load bài mới
+                correctCount = 0;
+                updateProgress();
+
+                renderChallenges(finalBase);
+
+            } catch (err) {
+                document.getElementById('exerciseInfo').innerHTML = `<span style="color:red;">Lỗi: ${err.message}</span>`;
+                console.error(err);
+            }
+        }
+
+        function renderChallenges(baseUrl) {
+            const container = document.getElementById('challenges');
+            container.innerHTML = '';
+            for (let i = 1; i <= numChallenges; i++) {
+                const div = document.createElement('div');
+                div.className = 'challenge';
+                div.id = `challenge-${i}`;
+                const scriptText = transcripts[i - 1] || '';
+                div.innerHTML = `
+                    <h2>Challenge ${i}</h2>
+                    <audio id="audio-${i}" controls src="${baseUrl}${i}.mp3"></audio>
+                    <div class="speed-control">
+                        <label>Tốc độ:</label>
+                        <select id="speed-${i}" onchange="changeSpeed(${i}, this.value)">
+                            <option value="1.0" selected>1.0x (bình thường)</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="0.5">0.5x</option>
+                            <option value="0.25">0.25x</option>
+                        </select>
+                    </div>
+                    <button class="script-btn" id="script-btn-${i}" onclick="toggleScript(${i})">Xem full script</button>
+                    <div id="script-text-${i}" class="script-text">${scriptText}</div>
+                    <textarea id="input-${i}" placeholder="Gõ lại những gì bạn nghe được..."></textarea>
+                    <button class="check" onclick="check(${i})">Check</button>
+                    <div id="result-${i}" class="result"></div>
+                `;
+                container.appendChild(div);
+
+                const textarea = document.getElementById(`input-${i}`);
+                textarea.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        check(i);
+                    }
+                });
+
+                const audio = document.getElementById(`audio-${i}`);
+                audio.playbackRate = 1.0;
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && !e.repeat) {
+                    const activeElement = document.activeElement;
+                    if (activeElement && activeElement.tagName === 'TEXTAREA') {
+                        const idMatch = activeElement.id.match(/input-(\d+)/);
+                        if (idMatch) {
+                            const id = parseInt(idMatch[1]);
+                            const audio = document.getElementById(`audio-${id}`);
+                            if (audio) {
+                                audio.currentTime = 0;
+                                audio.play().catch(() => {});
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function toggleScript(id) {
+            const btn = document.getElementById(`script-btn-${id}`);
+            const textDiv = document.getElementById(`script-text-${id}`);
+            if (textDiv.style.display === 'block') {
+                textDiv.style.display = 'none';
+                btn.textContent = 'Xem full script';
+            } else {
+                textDiv.style.display = 'block';
+                btn.textContent = 'Ẩn script';
+            }
+        }
+
+        function changeSpeed(id, speed) {
+            const audio = document.getElementById(`audio-${id}`);
+            if (audio) {
+                audio.playbackRate = parseFloat(speed);
+            }
+        }
+
+        function check(id) {
+            const inputEl = document.getElementById(`input-${id}`);
+            const resultEl = document.getElementById(`result-${id}`);
+            const userInput = inputEl.value.trim();
+            const correct = transcripts[id - 1] || '';
+
+            if (!userInput) {
+                resultEl.innerHTML = '<span class="incorrect">Bạn chưa gõ gì cả!</span>';
+                return;
+            }
+
+            function normalize(str) {
+                return str.toLowerCase().replace(/[^a-z0-9\s]/gi, ' ').replace(/\s+/g, ' ').trim();
+            }
+
+            const userClean = normalize(userInput);
+            const correctClean = normalize(correct);
+
+            if (userClean === correctClean) {
+                resultEl.innerHTML = '<span class="correct">Chính xác 🎉</span>';
+                correctCount++; // Tăng số câu đúng
+                updateProgress(); // Cập nhật thanh tiến độ
+
+                const nextId = id + 1;
+                if (nextId <= numChallenges) {
+                    const nextChallenge = document.getElementById(`challenge-${nextId}`);
+                    if (nextChallenge) {
+                        nextChallenge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        setTimeout(() => {
+                            const nextAudio = document.getElementById(`audio-${nextId}`);
+                            if (nextAudio) {
+                                nextAudio.currentTime = 0;
+                                nextAudio.play().catch(() => {});
+                            }
+                            document.getElementById(`input-${nextId}`).focus();
+                        }, 800);
+                    }
+                }
+                return;
+            }
+
+            let userDiffHtml = '';
+            let correctDiffHtml = '';
+            let i = 0, j = 0;
+            let firstDiffIndex = -1;
+            while (i < userInput.length || j < correct.length) {
+                const u = userInput[i] || '';
+                const c = correct[j] || '';
+                if (u && c && u.toLowerCase() === c.toLowerCase()) {
+                    userDiffHtml += u;
+                    correctDiffHtml += c;
+                    i++;
+                    j++;
+                } else {
+                    if (firstDiffIndex === -1) firstDiffIndex = Math.max(i, j);
+                    if (u) {
+                        userDiffHtml += `<span class="diff">${u}</span>`;
+                        i++;
+                    } else {
+                        userDiffHtml += `<span class="missing">_</span>`;
+                    }
+                    if (c) {
+                        correctDiffHtml += `<span class="diff">${c}</span>`;
+                        j++;
+                    } else {
+                        correctDiffHtml += `<span class="missing">_</span>`;
+                    }
+                }
+            }
+
+            let hintText = '';
+            if (firstDiffIndex !== -1) {
+                const remaining = correct.slice(firstDiffIndex);
+                const nextTwo = remaining.slice(0, 2);
+                if (nextTwo.length > 0) {
+                    hintText = `<div class="hint">Gợi ý: 2 ký tự tiếp theo nên là <strong>"${nextTwo}"</strong></div>`;
+                }
+            }
+
+            resultEl.innerHTML = `
+                <span class="incorrect">Sai rồi!</span><br>
+                Input của bạn (sai/thừa màu đỏ):<br>${userDiffHtml}<br>
+                ${hintText}
+            `;
+        }
+
+        // Hàm cập nhật progress bar + pháo hoa
+        function updateProgress() {
+            const percentage = Math.round((correctCount / numChallenges) * 100);
+            document.getElementById('progress-text').textContent = `${percentage}%`;
+            document.getElementById('progress-fill').style.height = `${percentage}%`;
+
+            // Hiệu ứng confetti theo mốc
+            if (percentage >= 30 && percentage <= 35) {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                alert("Giỏi quá! bạn đạt hơn 30% rồi nhé 🎉");
+            }
+            if (percentage >= 50 && percentage <= 55) {
+                confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+                alert("Giỏi quá! bạn đạt hơn 50% rồi nhé 🎉");
+            }
+            if (percentage >= 80 & percentage <= 85) {
+                confetti({ particleCount: 300, spread: 120, origin: { y: 0.6 } });
+                alert("Sắp xong rồi! bạn đạt hơn 80% 🔥");
+            }
+            if (percentage === 100) {
+                confetti({
+                    particleCount: 400,
+                    spread: 180,
+                    origin: { y: 0.6 },
+                    colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff69b4']
+                });
+                alert("Hoàn thành xuất sắc! 100% 🎆🎇");
+            }
+        }
+    </script>
+</body>
+</html>
