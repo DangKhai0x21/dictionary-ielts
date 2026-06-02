@@ -16,19 +16,8 @@
             </div>
             <div>
                 <h1 class="text-xl font-bold tracking-tight">IELTS Listening Map</h1>
-                <p class="text-xs text-slate-400">Đồng bộ Audio cá nhân với ieltssongngu.com</p>
+                <p class="text-xs text-slate-400">Audio phát trực tiếp từ GitHub repository</p>
             </div>
-        </div>
-
-        <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700 mb-6">
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                <i class="fa-solid fa-folder-open mr-1"></i> Đường dẫn thư mục chứa Audio của mày:
-            </label>
-            <input type="text" id="audioBasePath" 
-                   value="audio/" 
-                   class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-indigo-400 font-mono focus:outline-none focus:border-indigo-500 transition"
-                   placeholder="Ví dụ: D:/IELTS/Audio/ hoặc https://my-server/audio/">
-            <p class="text-[11px] text-slate-500 mt-1">Tên file audio trong thư mục phải đặt dạng: <span class="text-amber-400 font-mono">C8_T1_P1.mp3</span></p>
         </div>
 
         <div class="grid grid-cols-3 gap-4 mb-6">
@@ -48,7 +37,9 @@
 
         <div class="bg-slate-950/60 rounded-xl p-5 border border-slate-800 mb-6 text-center">
             <div id="currentTitle" class="text-lg font-semibold text-indigo-300 mb-1">Đang tải dữ liệu...</div>
-            <div id="audioFileName" class="text-xs font-mono text-slate-500 mb-4">--</div>
+            <div id="audioFileName" class="text-xs font-mono text-slate-500 mb-4 flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-link text-[10px]"></i> <span>--</span>
+            </div>
 
             <audio id="audioPlayer" controls class="w-full accent-indigo-500 bg-slate-900 rounded-lg"></audio>
         </div>
@@ -78,7 +69,6 @@
     </div>
 
     <script>
-        // ĐÃ SỬA LỖI SYNTAX Ở C9_T4_P2 CHO MÀY LUÔN NHÉ!
         const LEAN_DATA_BASE = {
     "C8_T1_P1": {
         "title": "Cam 8 – Test 1 – Part 1",
@@ -199,514 +189,6 @@
     "C9_T4_P2": {
         "title": "Cam 9 – Test 4 – Part 2",
         "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-9/cau-hoi-va-dap-an-cam9-test-4-section-2-water-heater"
-    },
-    "C9_T4_P3": {
-        "title": "Cam 9 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-9/cau-hoi-va-dap-an-cam9-test-4-section-3-education-system"
-    },
-    "C9_T4_P4": {
-        "title": "Cam 9 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-9/cau-hoi-va-dap-an-cam9-test-4-section-4-wildlife-found-in-city-gardens"
-    },
-    "C10_T1_P1": {
-        "title": "Cam 10 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-1-section-1-self-drive-tours-in-the-usa"
-    },
-    "C10_T1_P2": {
-        "title": "Cam 10 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-1-section-2-joining-the-leisure-club"
-    },
-    "C10_T1_P3": {
-        "title": "Cam 10 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-1-section-3-global-design-competition"
-    },
-    "C10_T1_P4": {
-        "title": "Cam 10 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-1-section-4-the-spirit-bear"
-    },
-    "C10_T2_P1": {
-        "title": "Cam 10 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-2-section-1-a-survey-on-transport"
-    },
-    "C10_T2_P2": {
-        "title": "Cam 10 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-2-section-2-new-city-developments"
-    },
-    "C10_T2_P3": {
-        "title": "Cam 10 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-2-section-3-the-early-life-of-thor-heyerdahl"
-    },
-    "C10_T2_P4": {
-        "title": "Cam 10 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-2-section-4-the-future-of-management"
-    },
-    "C10_T3_P1": {
-        "title": "Cam 10 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-3-section-1-early-learning-childcare-centre-enrolment-form"
-    },
-    "C10_T3_P2": {
-        "title": "Cam 10 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-3-section-2-dolphin-conservation-trust"
-    },
-    "C10_T3_P3": {
-        "title": "Cam 10 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-3-section-3-theatre-studies-course"
-    },
-    "C10_T3_P4": {
-        "title": "Cam 10 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-3-section-4-self-regulatory-focus-theory-and-leadership"
-    },
-    "C10_T4_P1": {
-        "title": "Cam 10 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-4-section-1-thorndykes-builders"
-    },
-    "C10_T4_P2": {
-        "title": "Cam 10 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-4-section-2-manham-port"
-    },
-    "C10_T4_P3": {
-        "title": "Cam 10 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-4-section-3-work-placement"
-    },
-    "C10_T4_P4": {
-        "title": "Cam 10 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-10/cau-hoi-va-dap-an-cam10-test-4-section-4-nanotechnology-technology-on-a-small-scale"
-    },
-    "C11_T1_P1": {
-        "title": "Cam 11 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-1-section-1-hiring-a-public-room"
-    },
-    "C11_T1_P2": {
-        "title": "Cam 11 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-1-section-2-fiddy-working-heritage-farm"
-    },
-    "C11_T1_P3": {
-        "title": "Cam 11 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-1-section-3-study-on-gender-in-physics"
-    },
-    "C11_T1_P4": {
-        "title": "Cam 11 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-1-section-4-ocean-biodiversity"
-    },
-    "C11_T2_P1": {
-        "title": "Cam 11 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-2-section-1-enquiry-about-joining-youth-council"
-    },
-    "C11_T2_P2": {
-        "title": "Cam 11 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-2-section-2-new-staff-at-theatre"
-    },
-    "C11_T2_P3": {
-        "title": "Cam 11 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-2-section-3-rocky-bay-field-trip"
-    },
-    "C11_T2_P4": {
-        "title": "Cam 11 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-2-section-4-designing-a-public-buiding-the-taylor-concert-hall"
-    },
-    "C11_T3_P1": {
-        "title": "Cam 11 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-3-section-1-free-activities-in-the-burnham-area"
-    },
-    "C11_T3_P2": {
-        "title": "Cam 11 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-3-section-2-changes-in-barford-over-the-last-50-years"
-    },
-    "C11_T3_P3": {
-        "title": "Cam 11 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-3-section-3-subject-of-drawing"
-    },
-    "C11_T3_P4": {
-        "title": "Cam 11 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-3-section-4-ethnography-in-business"
-    },
-    "C11_T4_P1": {
-        "title": "Cam 11 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-4-section-1-the-information-about-a-festival"
-    },
-    "C11_T4_P2": {
-        "title": "Cam 11 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-4-section-2-basement-of-museum"
-    },
-    "C11_T4_P3": {
-        "title": "Cam 11 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-4-section-3-some-research-on-psychology-and-music"
-    },
-    "C11_T4_P4": {
-        "title": "Cam 11 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-11/cau-hoi-va-dap-an-cam11-test-4-section-4-the-use-of-soil-to-reduce-carbon-dioxide-co2-in-the-atmosphere"
-    },
-    "C12_T1_P1": {
-        "title": "Cam 12 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-1-section-1-family-excursions"
-    },
-    "C12_T1_P2": {
-        "title": "Cam 12 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-1-section-2-talk-to-new-kitchen-assistants"
-    },
-    "C12_T1_P3": {
-        "title": "Cam 12 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-1-section-3-paper-on-public-libraries"
-    },
-    "C12_T1_P4": {
-        "title": "Cam 12 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-1-section-4-four-business-values"
-    },
-    "C12_T2_P1": {
-        "title": "Cam 12 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-2-section-1-events-during-kenton-festival"
-    },
-    "C12_T2_P2": {
-        "title": "Cam 12 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-2-section-2-theatre-trip-to-munich"
-    },
-    "C12_T2_P3": {
-        "title": "Cam 12 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-2-section-3-scandinavian-studies"
-    },
-    "C12_T2_P4": {
-        "title": "Cam 12 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-2-section-4-conflict-at-work"
-    },
-    "C12_T3_P1": {
-        "title": "Cam 12 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-3-section-1-public-library"
-    },
-    "C12_T3_P2": {
-        "title": "Cam 12 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-3-section-2-fitness-holidays"
-    },
-    "C12_T3_P3": {
-        "title": "Cam 12 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-3-section-3-stages-in-doing-atourism-case-study"
-    },
-    "C12_T3_P4": {
-        "title": "Cam 12 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-3-section-4-the-effects-of-environmental-change-on-birds"
-    },
-    "C12_T4_P1": {
-        "title": "Cam 12 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-4-section-1-cycle-tour-leader-applicant-enquiry"
-    },
-    "C12_T4_P2": {
-        "title": "Cam 12 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-4-section-2-visiting-the-sheepmarket-area"
-    },
-    "C12_T4_P3": {
-        "title": "Cam 12 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-4-section-3-presentation-on-film-adaptations-of-shakespeares-plays"
-    },
-    "C12_T4_P4": {
-        "title": "Cam 12 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-12/cau-hoi-va-dap-an-cam12-test-4-section-4-noise-in-cities"
-    },
-    "C13_T1_P1": {
-        "title": "Cam 13 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-1-section-1-cookery-classes"
-    },
-    "C13_T1_P2": {
-        "title": "Cam 13 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-1-section-2-traffic-changes-in-granford"
-    },
-    "C13_T1_P3": {
-        "title": "Cam 13 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-1-section-3-seed-germination"
-    },
-    "C13_T1_P4": {
-        "title": "Cam 13 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-1-section-4-effects-of-urban-environments-on-animals"
-    },
-    "C13_T2_P1": {
-        "title": "Cam 13 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-2-section-1-south-city-cycling-club"
-    },
-    "C13_T2_P2": {
-        "title": "Cam 13 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-2-section-2-information-on-company-volunteering-projects"
-    },
-    "C13_T2_P3": {
-        "title": "Cam 13 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-2-section-3-planning-a-presentation-on-nanotechnology"
-    },
-    "C13_T2_P4": {
-        "title": "Cam 13 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-2-section-4-episodic-memory"
-    },
-    "C13_T3_P1": {
-        "title": "Cam 13 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-3-section-1-moving-to-banford-city"
-    },
-    "C13_T3_P2": {
-        "title": "Cam 13 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-3-section-2-different-ways-of-keeping-fit"
-    },
-    "C13_T3_P3": {
-        "title": "Cam 13 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-3-section-3-project-on-using-natural-dyes-to-colour-fabrics"
-    },
-    "C13_T3_P4": {
-        "title": "Cam 13 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-3-section-4-the-sleepy-lizard-tiliqua-rugosa"
-    },
-    "C13_T4_P1": {
-        "title": "Cam 13 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-4-section-1-alexs-training"
-    },
-    "C13_T4_P2": {
-        "title": "Cam 13 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-4-section-2-snow-centre"
-    },
-    "C13_T4_P3": {
-        "title": "Cam 13 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-4-section-3-labels-giving-nutritional-information-on-food-packaging"
-    },
-    "C13_T4_P4": {
-        "title": "Cam 13 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-13/cau-hoi-va-dap-an-cam13-test-4-section-4-the-history-of-coffee"
-    },
-    "C14_T1_P1": {
-        "title": "Cam 14 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-1-section-1-crime-report-form"
-    },
-    "C14_T1_P2": {
-        "title": "Cam 14 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-1-section-2-induction-talk-for-new-apprentices"
-    },
-    "C14_T1_P3": {
-        "title": "Cam 14 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-1-section-3-cities-built-by-the-sea"
-    },
-    "C14_T1_P4": {
-        "title": "Cam 14 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-1-section-4-marine-renewable-energy-ocean-energy"
-    },
-    "C14_T2_P1": {
-        "title": "Cam 14 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-2-section-1-total-health-clinic"
-    },
-    "C14_T2_P2": {
-        "title": "Cam 14 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-2-section-2-visit-to-branley-castle"
-    },
-    "C14_T2_P3": {
-        "title": "Cam 14 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-2-section-3-woolly-mammoths-on-st-pauls-island"
-    },
-    "C14_T2_P4": {
-        "title": "Cam 14 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-2-section-4-the-history-of-weather-forecasting"
-    },
-    "C14_T3_P1": {
-        "title": "Cam 14 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-3-section-1-flanders-conference-hotel"
-    },
-    "C14_T3_P2": {
-        "title": "Cam 14 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-3-section-2-what-volunteers-have-helped-people-to-do"
-    },
-    "C14_T3_P3": {
-        "title": "Cam 14 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-3-section-3-background-on-school-marching-band"
-    },
-    "C14_T3_P4": {
-        "title": "Cam 14 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-3-section-4-concerts-in-university-arts-festival"
-    },
-    "C14_T4_P1": {
-        "title": "Cam 14 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-4-section-1-enquiry-about-booking-hotel-room-for-event"
-    },
-    "C14_T4_P2": {
-        "title": "Cam 14 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-4-section-2-excursion-at-the-hotel"
-    },
-    "C14_T4_P3": {
-        "title": "Cam 14 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-4-section-3-the-course-of-literature-for-children"
-    },
-    "C14_T4_P4": {
-        "title": "Cam 14 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-14/cau-hoi-va-dap-an-cam14-test-4-section-4-the-hunt-for-sunken-settlements-and-ancient-shipwrecks"
-    },
-    "C15_T1_P1": {
-        "title": "Cam 15 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-1-part-1-bankside-recruitment-agency"
-    },
-    "C15_T1_P2": {
-        "title": "Cam 15 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-1-part-2-matthews-island-holidays"
-    },
-    "C15_T1_P3": {
-        "title": "Cam 15 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-1-part-3-birth-order"
-    },
-    "C15_T1_P4": {
-        "title": "Cam 15 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-1-part-4-the-eucalyptus-tree-in-australia"
-    },
-    "C15_T2_P1": {
-        "title": "Cam 15 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-2-part-1-tourist-information-office"
-    },
-    "C15_T2_P2": {
-        "title": "Cam 15 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-2-part-2-minster-park"
-    },
-    "C15_T2_P3": {
-        "title": "Cam 15 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-2-part-3-british-life-and-literature-in-the-mid-19th-century"
-    },
-    "C15_T2_P4": {
-        "title": "Cam 15 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-2-part-3-agricultural-programme-in-mozambique"
-    },
-    "C15_T3_P1": {
-        "title": "Cam 15 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-3-part-1-employment-agency-possible-jobs"
-    },
-    "C15_T3_P2": {
-        "title": "Cam 15 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-3-part-2-street-play-scheme"
-    },
-    "C15_T3_P3": {
-        "title": "Cam 15 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-3-part-3-media-studies-assignment"
-    },
-    "C15_T3_P4": {
-        "title": "Cam 15 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-3-part-4-early-history-of-keeping-clean"
-    },
-    "C15_T4_P1": {
-        "title": "Cam 15 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-4-part-1-customer-satisfaction-survey"
-    },
-    "C15_T4_P2": {
-        "title": "Cam 15 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-4-part-2-croft-valley-park"
-    },
-    "C15_T4_P3": {
-        "title": "Cam 15 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-4-part-3-presentation-about-refrigeration"
-    },
-    "C15_T4_P4": {
-        "title": "Cam 15 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-15/cau-hoi-va-dap-an-cam15-test-4-part-4-how-the-industrial-revolution-affected-life-in-britain"
-    },
-    "C16_T1_P1": {
-        "title": "Cam 16 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-1-part-1-childrens-engineering-workshops"
-    },
-    "C16_T1_P2": {
-        "title": "Cam 16 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-1-part-2-plan-of-stevensons-site"
-    },
-    "C16_T1_P3": {
-        "title": "Cam 16 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-1-part-3-discussing-the-art-projects"
-    },
-    "C16_T1_P4": {
-        "title": "Cam 16 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-1-part-4-stoicism"
-    },
-    "C16_T2_P1": {
-        "title": "Cam 16 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-2-part-1-copying-photos-to-digital-format"
-    },
-    "C16_T2_P2": {
-        "title": "Cam 16 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-2-part-2-food-hall"
-    },
-    "C16_T2_P3": {
-        "title": "Cam 16 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-2-part-3-assignment-on-sleep-and-dreams"
-    },
-    "C16_T2_P4": {
-        "title": "Cam 16 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-2-part-3-health-benefits-of-dance"
-    },
-    "C16_T3_P1": {
-        "title": "Cam 16 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-3-part-1-junior-cycle-camp"
-    },
-    "C16_T3_P2": {
-        "title": "Cam 16 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-3-part-2-job-fair"
-    },
-    "C16_T3_P3": {
-        "title": "Cam 16 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-3-part-3-diet-and-obesity"
-    },
-    "C16_T3_P4": {
-        "title": "Cam 16 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-3-part-4-hand-knitting"
-    },
-    "C16_T4_P1": {
-        "title": "Cam 16 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-4-part-1-holiday-rental"
-    },
-    "C16_T4_P2": {
-        "title": "Cam 16 – Test 4 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-4-part-2-local-council-report-on-traffic-and-highways"
-    },
-    "C16_T4_P3": {
-        "title": "Cam 16 – Test 4 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-4-part-1-bike-sharing-schemes-in-different-cities"
-    },
-    "C16_T4_P4": {
-        "title": "Cam 16 – Test 4 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-16/cau-hoi-va-dap-an-cam16-test-4-part-1-the-extinction-of-the-dodo-bird"
-    },
-    "C18_T1_P1": {
-        "title": "Cam 18 – Test 1 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-1-part-1-transport-survey"
-    },
-    "C18_T1_P2": {
-        "title": "Cam 18 – Test 1 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-1-part-2-becoming-a-volunteer-for-ace"
-    },
-    "C18_T1_P3": {
-        "title": "Cam 18 – Test 1 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-1-part-3-talk-on-jobs-in-fashion-design"
-    },
-    "C18_T1_P4": {
-        "title": "Cam 18 – Test 1 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-1-part-4-elephant-translocation"
-    },
-    "C18_T2_P1": {
-        "title": "Cam 18 – Test 2 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-2-part-1-working-at-milos-restaurants"
-    },
-    "C18_T2_P2": {
-        "title": "Cam 18 – Test 2 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-2-part-2-housing-development"
-    },
-    "C18_T2_P3": {
-        "title": "Cam 18 – Test 2 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-2-part-3-laki-eruption-of-1783"
-    },
-    "C18_T2_P4": {
-        "title": "Cam 18 – Test 2 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-2-part-4-pockets"
-    },
-    "C18_T3_P1": {
-        "title": "Cam 18 – Test 3 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-3-part-1-wayside-camera-club"
-    },
-    "C18_T3_P2": {
-        "title": "Cam 18 – Test 3 – Part 2",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-3-part-2-picking-mushrooms"
-    },
-    "C18_T3_P3": {
-        "title": "Cam 18 – Test 3 – Part 3",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-3-part-3-automation-and-future-of-work"
-    },
-    "C18_T3_P4": {
-        "title": "Cam 18 – Test 3 – Part 4",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-3-part-4-space-traffic-management"
-    },
-    "C18_T4_P1": {
-        "title": "Cam 18 – Test 4 – Part 1",
-        "url": "https://ieltssongngu.com/ielts/de-thi-ielts/ielts-cambridge-18/cau-hoi-va-dap-an-cam18-test-4-part-1-job-details-from-employment-agency"
     },
     "C18_T4_P2": {
         "title": "Cam 18 – Test 4 – Part 2",
@@ -859,30 +341,27 @@
         const testSelect = document.getElementById('testSelect');
         const partSelect = document.getElementById('partSelect');
         const currentTitle = document.getElementById('currentTitle');
-        const audioFileName = document.getElementById('audioFileName');
+        const audioFileName = document.querySelector('#audioFileName span');
         const audioPlayer = document.getElementById('audioPlayer');
-        const audioBasePath = document.getElementById('audioBasePath');
         const webLink = document.getElementById('webLink');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        
-        // Cần thêm DOM của vùng nội dung mới
         const contentBlock = document.getElementById('contentBlock');
         const contentText = document.getElementById('contentText');
 
-        // Biến toàn cục giữ URL hiện tại của bài học để phục vụ Fetch
         let currentTargetUrl = "";
+        let currentFallbackIndex = 0;
+        let formatsToTry = [];
 
-        // Phân tích database để tạo cây phân cấp (Tree) nhằm render dropdown động
+        // Cấu trúc cây menu
         const dbTree = {};
         sortedKeys.forEach(key => {
-            const [c, t, p] = key.split('_'); // C8, T1, P1
+            const [c, t, p] = key.split('_');
             if (!dbTree[c]) dbTree[c] = {};
             if (!dbTree[c][t]) dbTree[c][t] = [];
             dbTree[c][t].push(p);
         });
 
-        // Đổ dữ liệu vào Cam Select
         function initDropdowns() {
             camSelect.innerHTML = Object.keys(dbTree).map(c => `<option value="${c}">Quyển ${c.substring(1)}</option>`).join('');
             updateTestOptions();
@@ -903,105 +382,110 @@
             renderCurrentMatch();
         }
 
-        // Render thông tin và tải nhạc
+        // Render thông tin và xử lý link nhạc tự động từ GitHub
         function renderCurrentMatch() {
             const key = `${camSelect.value}_${testSelect.value}_${partSelect.value}`;
             const data = LEAN_DATA_BASE[key];
             
-            // Mỗi lần đổi bài học, ẩn khung chứa nội dung cũ đi cho sạch sẽ
             contentBlock.classList.add('hidden');
             contentText.innerHTML = '';
             
             if (data) {
                 currentTitle.textContent = data.title;
-                currentTargetUrl = data.url; // Lưu URL lại để fetch
+                currentTargetUrl = data.url;
                 
-                // Ghép nối file audio
-                const base = audioBasePath.value.endsWith('/') ? audioBasePath.value : audioBasePath.value + '/';
-                const fileName = `${key}.mp3`;
-                audioFileName.textContent = fileName;
+                const camNum = camSelect.value.substring(1);
+                const testNum = testSelect.value.substring(1);
+                const partNum = partSelect.value.substring(1);
                 
-                // Nạp src mới vào Player
-                audioPlayer.src = base + fileName;
-                audioPlayer.load();
+                // Mảng chứa các biến thể đặt tên file để quét lần lượt nếu dính lỗi 404
+                formatsToTry = [
+                    `Cam ${camNum} – Test ${testNum} – Section ${partNum}.mp3`, // Dạng en-dash '–' Section (mặc định)
+                    `Cam ${camNum} – Test ${testNum} – Part ${partNum}.mp3`,    // Dạng en-dash '–' Part
+                    `Cam ${camNum} - Test ${testNum} - Section ${partNum}.mp3`, // Dạng gạch ngắn '-' Section
+                    `Cam ${camNum} - Test ${testNum} - Part ${partNum}.mp3`     // Dạng gạch ngắn '-' Part
+                ];
+                
+                currentFallbackIndex = 0;
+                tryLoadAudio();
             }
 
-            // Cập nhật trạng thái nút Prev/Next
             const currentIndex = sortedKeys.indexOf(key);
             prevBtn.disabled = currentIndex <= 0;
             nextBtn.disabled = currentIndex >= sortedKeys.length - 1 || currentIndex === -1;
         }
 
-        // --- XỬ LÝ SỰ KIỆN FETCH NỘI DUNG SONG NGỮ ---
-        webLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Chặn đứng việc mở link sang tab mới
-
-            if (!currentTargetUrl) {
-                alert("Không tìm thấy URL bài học hợp lệ!");
-                return;
+        // Hàm nạp source nhạc từ CDN Raw của GitHub
+        function tryLoadAudio() {
+            if (currentFallbackIndex < formatsToTry.length) {
+                const baseUrl = "https://raw.githubusercontent.com/DangKhai0x21/auto-listening/main/audio-files/";
+                const fileName = formatsToTry[currentFallbackIndex];
+                
+                audioFileName.textContent = fileName;
+                // encodeURIComponent để giải quyết các khoảng trắng và ký tự đặc biệt như dấu gạch ngang
+                audioPlayer.src = baseUrl + encodeURIComponent(fileName);
+                audioPlayer.load();
+            } else {
+                audioFileName.textContent = "❌ Không tìm thấy file này trên kho GitHub!";
             }
+        }
 
-            // Hiện khung chứa và thông báo đang tải
+        // Cơ chế bẫy lỗi: Nếu file dạng này lỗi, chuyển sang cấu hình dạng tên tiếp theo
+        audioPlayer.addEventListener('error', () => {
+            if (audioPlayer.src && currentFallbackIndex < formatsToTry.length - 1) {
+                currentFallbackIndex++;
+                console.log(`Lỗi tải, chuyển sang thử mẫu tên file dự phòng số ${currentFallbackIndex + 1}...`);
+                tryLoadAudio();
+                audioPlayer.play().catch(() => {});
+            }
+        });
+
+        // --- FETCH DỮ LIỆU BÀI HỌC SONG NGỮ ---
+        webLink.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            if (!currentTargetUrl) return;
+
             contentBlock.classList.remove('hidden');
             contentText.innerHTML = `
                 <div class="text-center text-amber-400 py-6">
-                    <i class="fa-solid fa-spinner animate-spin mr-2 text-lg"></i> Đang bốc nội dung từ ieltssongngu.com về, đợi xíu...
+                    <i class="fa-solid fa-spinner animate-spin mr-2 text-lg"></i> Đang bốc dữ liệu từ ieltssongngu.com, đợi tí...
                 </div>
             `;
 
-            // Gọi AJAX lấy HTML của trang web
             fetch(currentTargetUrl)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Lỗi kết nối mạng hoặc Server không phản hồi!');
-                }
+                if (!response.ok) throw new Error('Mạng lỗi hoặc không phản hồi');
                 return response.text();
             })
             .then(html => {
-                // Sử dụng DOMParser để bóc tách dữ liệu sạch, không nhét cả cục header/footer vào làm hỏng giao diện
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
-                
-                // ieltssongngu.com dùng WordPress, nội dung bài viết thường nằm trong class '.entry-content' hoặc thẻ '<article>'
                 const mainArticle = doc.querySelector('.entry-content') || doc.querySelector('article') || doc.body;
                 
-                // Dọn rác: Xóa bỏ các thành phần thừa thãi như script độc hại, style inline, quảng cáo nếu có
                 mainArticle.querySelectorAll('script, style, iframe, header, footer, nav, .sharedaddy').forEach(el => el.remove());
-
-                // Đổ HTML sạch vào khung
                 contentText.innerHTML = mainArticle.innerHTML;
                 
-                // Cuộn mượt xuống khu vực nội dung vừa load để người dùng dễ theo dõi
                 contentBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
             })
             .catch(error => {
-                console.error("Chi tiết lỗi fetch:", error);
-                // Trình bày thông báo lỗi CORS chi tiết phòng trường hợp chạy local
+                console.error(error);
                 contentText.innerHTML = `
                     <div class="p-3 border border-rose-800/50 bg-rose-950/30 rounded-xl text-center">
-                        <p class="text-rose-400 font-bold mb-1">
-                            <i class="fa-solid fa-circle-exclamation mr-1"></i> Không thể bốc dữ liệu trực tiếp! (Lỗi CORS)
-                        </p>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Trình duyệt chặn không cho file HTML chạy local tự ý lấy dữ liệu từ một website khác qua API.
-                        </p>
-                        <div class="mt-3 bg-slate-950 p-2.5 rounded-lg text-xs text-amber-400 text-left font-sans">
-                            <b class="text-slate-200 block mb-1">💡 Cách fix để làm mượt mà:</b>
-                            1. Hãy lên kho tiện ích Chrome/Edge cài extension tên là <span class="underline font-semibold font-mono">Allow CORS: Access-Control-Allow-Origin</span>.<br>
-                            2. Bật Extension đó lên (chuyển sang màu xanh) rồi bấm lại nút này là nội dung tự chui vào trang ngon lành!
+                        <p class="text-rose-400 font-bold mb-1"><i class="fa-solid fa-circle-exclamation mr-1"></i> Không thể bốc dữ liệu trực tiếp do chặn CORS</p>
+                        <div class="mt-3 bg-slate-950 p-2.5 rounded-lg text-xs text-amber-400 text-left">
+                            <b>💡 Cách giải quyết nhanh gọn:</b> Hãy bật tiện ích <b>Allow CORS</b> trên trình duyệt của bạn lên rồi bấm lại nút này nhé!
                         </div>
                     </div>
                 `;
             });
         });
 
-        // Chọn bằng dropdown
+        // Điều hướng chọn
         camSelect.addEventListener('change', updateTestOptions);
         testSelect.addEventListener('change', updatePartOptions);
         partSelect.addEventListener('change', renderCurrentMatch);
-        audioBasePath.addEventListener('input', renderCurrentMatch);
 
-        // Sự kiện phím bấm Next / Prev
         function navigate(direction) {
             const key = `${camSelect.value}_${testSelect.value}_${partSelect.value}`;
             const currentIndex = sortedKeys.indexOf(key);
@@ -1018,15 +502,13 @@
                 partSelect.value = p;
                 renderCurrentMatch();
                 
-                // Tự động phát khi chuyển bài
-                audioPlayer.play().catch(() => console.log("Chờ người dùng tương tác để auto-play."));
+                audioPlayer.play().catch(() => console.log("Chờ tương tác để auto-play."));
             }
         }
 
         prevBtn.addEventListener('click', () => navigate(-1));
         nextBtn.addEventListener('click', () => navigate(1));
 
-        // Khởi chạy ứng dụng
         initDropdowns();
     </script>
 </body>
